@@ -47,18 +47,6 @@ namespace HDK_Sample
             return evalInt("getPrimGrp", 0, t);
         }
 
-//        //toggle custom attr name
-//        int setCustomNameToggle(fpreal t)
-//        {
-//            return evalInt("setCustomToggle", 0, t);
-//        }
-
-//        //set custom name
-//        void    setAttrName(UT_String &str, fpreal t)
-//        {
-//            evalString(str, "attrName", 0, t);
-//        }
-
         //toggle debug
         int debugMe(fpreal t)
         {
@@ -68,21 +56,10 @@ namespace HDK_Sample
 
         GA_RWAttributeRef groupNumIndex, groupNameIndex;
 
-        //print our string array
-//        void printArrayVal(const UT_ValArray<UT_String>&arrIn);
-
-        //define our arrays
-//        UT_ValArray<UT_String> ptNumListFirst;
-
         void groupToAttrPoints(const UT_String& in_attr, const int& debug_in);
         void groupToAttrPrims(const UT_String& in_attr, const int& debug_in);
 
         int debug;
-//        bool primAttrCheck;
-//        bool primAttrRename;
-//        UT_String oldName;
-//        UT_String defaultName;
-//        UT_String newName;
 
 //        /// This variable is used together with the call to the "checkInputChanged"
 //        /// routine to notify the handles (if any) if the input has changed.
