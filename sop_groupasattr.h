@@ -53,8 +53,9 @@ namespace HDK_Sample
             return evalInt("debug", 0, t);
         }
 
+        bool primChanged;
 
-        GA_RWAttributeRef groupNumIndex, groupNameIndex;
+        GA_RWAttributeRef groupNameIndex;
 
         void groupToAttrPoints(const UT_String& in_attr, const int& debug_in);
         void groupToAttrPrims(const UT_String& in_attr, const int& debug_in);

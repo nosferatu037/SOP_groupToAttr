@@ -74,6 +74,8 @@ SOP_groupAsAttr::SOP_groupAsAttr(OP_Network *net, const char *name, OP_Operator 
     // may not update, or SOPs that check data IDs
     // may not cook correctly, so be *very* careful!
     mySopFlags.setManagesDataIDs(true);
+    //set our init flag to false or checking the primitive groups as attrs
+    primChanged = false;
 }
 
 
@@ -168,14 +170,26 @@ SOP_groupAsAttr::cookMySop(OP_Context &context)
             cout << "-------------------------------" <<endl;
             cout << "--*>YOU HAVE CHOSEN A PRIM GROUP" << endl;
         }
-
-        groupToAttrPrims("primGroupName", debug);
+        //if we have never checked this option before
+        if(!primChanged)
+        {
+            //deal with the prim groups if any as attrs
+            groupToAttrPrims("primGroupName", debug);
+            //change our flag to on
+            primChanged = true;
+        }
 
     }
     else
     {
+        //otherwise if we have just unchecked the prim attrs
+        if(primChanged)
+        {
+            //destroy the attr and flag our check
+            gdp->destroyAttribute(GA_ATTRIB_PRIMITIVE, "primGroupName");
+            primChanged = false;
+        }
 
-         gdp->destroyAttribute(GA_ATTRIB_PRIMITIVE, "primGroupName");
 
     }
 
